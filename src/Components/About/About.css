@@ -1,0 +1,136 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  margin: 80px;
+}
+
+/* TITLE */
+.about-title {
+  position: relative;
+}
+
+.about-title h1 {
+  font-size: 72px;
+  font-weight: 600;
+  padding: 0 30px;
+  letter-spacing: 1px;
+}
+
+.about-title img {
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  z-index: -1;
+  opacity: 0.45;
+}
+
+/* SECTIONS LAYOUT */
+.about-sections {
+  display: flex;
+  gap: 80px;
+}
+
+.about-left {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* PROFILE IMAGE */
+.about-left img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.18);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-left img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.25);
+}
+
+/* RIGHT CONTENT */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* PARAGRAPH */
+.about-para {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #d6d6d6;
+  max-width: 600px;
+}
+
+/* SKILLS */
+.about-skills {
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-skill {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.3s ease;
+}
+
+.about-skill p {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* SKILL BAR */
+.about-skill hr {
+  outline: none;
+  height: 8px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #DF8908, #B415FF);
+}
+
+/* hover polish */
+.about-skill:hover {
+  transform: translateX(6px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about {
+    margin: 60px 30px;
+  }
+
+  .about-title h1 {
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .about-left {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .about-right {
+    align-items: center;
+    gap: 40px;
+  }
+
+  .about-para {
+    text-align: center;
+    font-size: 20px;
+  }
+}

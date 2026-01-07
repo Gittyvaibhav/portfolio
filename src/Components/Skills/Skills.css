@@ -1,0 +1,309 @@
+/* CSS VARIABLES */
+:root {
+  --bg-dark: #161513;
+  --text-primary: white;
+  --gradient-primary: linear-gradient(135deg, #df8908, #b415ff);
+  --skill-gap: 70px;
+}
+
+.skills {
+  padding: 120px 170px;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background gradient */
+.skills::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(223, 137, 8, 0.06), transparent 70%);
+  pointer-events: none;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+/* TITLE */
+.skills-title-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 90px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.skills-title {
+  font-size: 72px;
+  font-weight: 600;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+.skills-title-wrapper img {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-1%);
+  width: 250px;
+  opacity: 0.5;
+  filter: blur(1px);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* GRID */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--skill-gap);
+  justify-items: center;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* SKILL ITEM */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 32px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+}
+
+/* Animated gradient border on hover */
+.skill-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: var(--gradient-primary);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Glow effect */
+.skill-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 137, 8, 0.15), transparent 70%);
+  transition: width 0.5s ease, height 0.5s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ICON */
+.skill-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.7);
+  opacity: 0.6;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+/* TEXT */
+.skill-item p {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  opacity: 0.7;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* HOVER EFFECTS */
+.skill-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+              0 0 30px rgba(223, 137, 8, 0.2);
+}
+
+.skill-item:hover::before {
+  opacity: 1;
+}
+
+.skill-item:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.skill-item:hover img {
+  transform: scale(1.2) rotateY(360deg);
+  filter: grayscale(0%) brightness(1) drop-shadow(0 4px 12px rgba(223, 137, 8, 0.4));
+  opacity: 1;
+}
+
+.skill-item:hover p {
+  opacity: 1;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* STAGGERED ANIMATION */
+.skill-item:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s backwards; }
+.skill-item:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s backwards; }
+.skill-item:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s backwards; }
+.skill-item:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s backwards; }
+.skill-item:nth-child(5) { animation: fadeInUp 0.6s ease-out 0.5s backwards; }
+.skill-item:nth-child(6) { animation: fadeInUp 0.6s ease-out 0.6s backwards; }
+.skill-item:nth-child(7) { animation: fadeInUp 0.6s ease-out 0.7s backwards; }
+.skill-item:nth-child(8) { animation: fadeInUp 0.6s ease-out 0.8s backwards; }
+.skill-item:nth-child(9) { animation: fadeInUp 0.6s ease-out 0.9s backwards; }
+
+/* ANIMATIONS */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-1%) translateY(0);
+  }
+  50% {
+    transform: translateX(-1%) translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.06;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .skills {
+    padding: 100px 80px;
+  }
+
+  .skills-container {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .skills {
+    padding: 80px 40px;
+  }
+
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .skills-title {
+    font-size: 56px;
+  }
+
+  .skills-title-wrapper {
+    margin-bottom: 70px;
+  }
+
+  .skill-item {
+    max-width: 100%;
+    padding: 28px 20px;
+  }
+
+  .skill-item img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills {
+    padding: 70px 24px;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .skills-title {
+    font-size: 42px;
+  }
+
+  .skills-title-wrapper img {
+    width: 180px;
+  }
+
+  .skill-item {
+    padding: 24px 20px;
+  }
+
+  .skill-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .skill-item p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .skills-title {
+    font-size: 36px;
+  }
+}
