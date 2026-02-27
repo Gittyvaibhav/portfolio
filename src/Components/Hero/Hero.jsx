@@ -7,7 +7,7 @@ const Hero = () => {
       <img src={profile_img} alt="Vaibhav Sharma" className="hero-img" />
 
       <h1>
-        I’m <span>Vaibhav Sharma</span>, Fullstack Web-Developer
+       Hi! I’m <span>Vaibhav Sharma</span>, Fullstack Web-Developer
       </h1>
 
       <p>
