@@ -1,10 +1,49 @@
-*{
-    margin:0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    height: 100vh;
-    background-color: #161513;
-    color: white;
-    font-family: 'outfit';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #161513;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.75s ease;
+  filter: blur(8px);
+}
+
+.reveal-up {
+  transform: translateY(42px);
+}
+
+.reveal-left {
+  transform: translateX(-42px);
+}
+
+.reveal-right {
+  transform: translateX(42px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+  filter: blur(0);
 }

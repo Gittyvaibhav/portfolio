@@ -1,4 +1,3 @@
-/* CSS VARIABLES */
 :root {
   --gradient-primary: linear-gradient(90deg, #df8908, #b415ff);
   --bg-dark: #161513;
@@ -14,35 +13,46 @@
 }
 
 .contact {
-  padding: 120px 170px;
+  padding: 110px clamp(24px, 7vw, 110px);
   background-color: var(--bg-dark);
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
 }
 
-/* Subtle background decoration */
 .contact::before {
   content: '';
   position: absolute;
   top: -50%;
   right: -20%;
-  width: 600px;
-  height: 600px;
+  width: min(600px, 80vw);
+  height: min(600px, 80vw);
   background: radial-gradient(circle, rgba(217, 70, 239, 0.08), transparent 70%);
   pointer-events: none;
 }
 
-/* TITLE */
+.contact::after {
+  content: '';
+  position: absolute;
+  left: 6%;
+  bottom: 12%;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 137, 8, 0.12), transparent 70%);
+  filter: blur(16px);
+  animation: contactDrift 10s ease-in-out infinite;
+}
+
 .contact-title {
   position: relative;
   text-align: center;
-  margin-bottom: 90px;
+  margin-bottom: 72px;
   animation: fadeInDown 0.8s ease-out;
 }
 
 .contact-title h1 {
-  font-size: 64px;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
   font-weight: 600;
   letter-spacing: 0.5px;
   margin: 0;
@@ -72,29 +82,31 @@
   bottom: 1px;
   left: 50%;
   transform: translateX(-13%);
-  width: 200px;
+  width: min(200px, 44vw);
   opacity: 0.4;
   filter: blur(1px);
 }
 
-/* MAIN SECTION */
 .contact-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 110px;
+  display: grid;
+  grid-template-columns: minmax(280px, 440px) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 96px);
   position: relative;
   z-index: 1;
+  align-items: start;
 }
 
-/* LEFT SIDE */
 .contact-left {
-  max-width: 440px;
   animation: fadeInLeft 0.8s ease-out;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .contact-left h2 {
-  font-size: 38px;
-  margin-bottom: 22px;
+  font-size: clamp(2rem, 4vw, 2.4rem);
+  margin-bottom: 18px;
   font-weight: 600;
   line-height: 1.3;
 }
@@ -109,40 +121,57 @@
 .contact-left p {
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
   font-size: 16px;
 }
 
-.contact-details p {
-  margin-bottom: 18px;
-  font-size: 15px;
-  opacity: 0.9;
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-detail {
   display: flex;
   align-items: center;
   gap: 12px;
-  transition: color 0.3s ease, transform 0.3s ease;
-  cursor: default;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-.contact-details p:hover {
+.contact-detail:hover {
+  transform: translateX(8px) scale(1.01);
+  border-color: rgba(223, 137, 8, 0.35);
+  color: white;
+}
+
+.contact-detail::before {
+  content: '->';
   color: var(--accent-purple);
-  transform: translateX(4px);
+  font-weight: 700;
 }
 
-.contact-details p::before {
-  content: '→';
-  color: var(--accent-purple);
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/* RIGHT SIDE (FORM) */
 .contact-right {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
   animation: fadeInRight 0.8s ease-out;
+  padding: 30px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.contact-right:hover {
+  transform: translateY(-6px);
+  border-color: rgba(180, 21, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
 }
 
 .contact-right label {
@@ -151,23 +180,21 @@
   letter-spacing: 0.4px;
   font-weight: 500;
   text-transform: uppercase;
-  margin-bottom: -18px;
+  margin-bottom: -14px;
   display: block;
 }
 
-/* INPUTS */
 .contact-right input,
 .contact-right textarea {
   background: var(--bg-input);
   border: 1px solid transparent;
   outline: none;
   padding: 18px 20px;
-  border-radius: 12px;
+  border-radius: 14px;
   color: var(--text-primary);
   font-size: 15px;
   font-family: inherit;
   width: 100%;
-  box-sizing: border-box;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -180,7 +207,6 @@
 .contact-right input:hover,
 .contact-right textarea:hover {
   background: var(--bg-input-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .contact-right input:focus,
@@ -188,93 +214,67 @@
   border-color: var(--border-focus);
   background: var(--bg-input-focus);
   box-shadow: 0 4px 20px rgba(223, 137, 8, 0.2);
-  transform: translateY(-1px);
 }
 
 .contact-right textarea {
   resize: vertical;
-  min-height: 140px;
+  min-height: 150px;
   line-height: 1.6;
 }
 
-/* BUTTON */
 .contact-right button {
-  margin-top: 10px;
+  margin-top: 6px;
   width: fit-content;
-  padding: 16px 48px;
-  border-radius: 30px;
+  padding: 16px 42px;
+  border-radius: 999px;
   border: none;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.5px;
   color: var(--text-primary);
   background: var(--gradient-primary);
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(180, 21, 255, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-right button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
 }
 
 .contact-right button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(180, 21, 255, 0.4);
+  box-shadow: 0 12px 35px rgba(180, 21, 255, 0.35);
 }
 
-.contact-right button:hover::before {
-  left: 100%;
+.contact-right button:focus-visible {
+  outline: 2px solid rgba(223, 137, 8, 0.45);
+  outline-offset: 3px;
 }
 
-.contact-right button:active {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(180, 21, 255, 0.35);
-}
-
-.contact-right button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* FORM RESULT */
 .form-result {
-  margin-top: 10px;
+  margin-top: 4px;
   font-size: 14px;
   color: var(--text-secondary);
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: 10px;
   animation: fadeIn 0.5s ease-out;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .form-result.success {
-  background: rgba(34, 197, 94, 0.1);
+  background: rgba(34, 197, 94, 0.12);
   color: #4ade80;
   border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
 .form-result.error {
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.12);
   color: #f87171;
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-/* ANIMATIONS */
 @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -286,6 +286,7 @@
     opacity: 0;
     transform: translateX(-40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -297,6 +298,7 @@
     opacity: 0;
     transform: translateX(40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -307,63 +309,53 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .contact {
-    padding: 90px 40px;
+@keyframes contactDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 
-  .contact::before {
-    width: 400px;
-    height: 400px;
+  50% {
+    transform: translate3d(18px, -18px, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .contact {
+    padding: 88px 32px;
   }
 
   .contact-section {
-    flex-direction: column;
-    gap: 70px;
-  }
-
-  .contact-title h1 {
-    font-size: 46px;
-  }
-
-  .contact-left {
-    max-width: 100%;
-  }
-
-  .contact-left h2 {
-    font-size: 32px;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 600px) {
   .contact {
-    padding: 70px 24px;
+    padding: 72px 20px;
   }
 
   .contact-title {
-    margin-bottom: 60px;
+    margin-bottom: 56px;
   }
 
-  .contact-title h1 {
-    font-size: 36px;
+  .contact-left,
+  .contact-right {
+    padding: 22px 18px;
+    border-radius: 22px;
   }
 
-  .contact-left h2 {
-    font-size: 28px;
+  .contact::after {
+    display: none;
   }
 
   .contact-right button {
     width: 100%;
-    padding: 16px 32px;
-  }
-
-  .contact-section {
-    gap: 50px;
   }
 }
