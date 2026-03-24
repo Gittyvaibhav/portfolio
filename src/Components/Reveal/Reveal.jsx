@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 
 const Reveal = ({
-  as: Tag = 'div',
+  as = 'div',
   children,
   className = '',
   delay = 0,
   direction = 'up',
   threshold = 0.18,
   ...props
-}) => {
+} = {}) => {
+  const Tag = as
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
 
