@@ -41,9 +41,15 @@ const Hero = () => {
         >
           LinkedIn
         </a>
-        <div id='portfolio' className="hero-resume">
+        <a
+          id='portfolio'
+          className="hero-resume"
+          href="https://drive.google.com/file/d/1ilKzqc15cmLSh2hu4sv4r8atlKocBKCM/view?usp=sharing"
+          target="_blank"
+          rel="noreferrer"
+        >
           Click to download my resume
-        </div>
+        </a>
       </Reveal>
     </div>
   )
